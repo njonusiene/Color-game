@@ -22,7 +22,27 @@ function displayRandomColorName() {
   var randomColor = colors[randomIndex];
   colorName.textContent = randomColor;
 }
-//
+
+function restartGame() {
+  topElement.style.background = "#4682b4";
+  colors = [];
+  var numBoxes = (container.classList.contains("hard")) ? 6 : 3;
+  for (var i = 0; i < numBoxes; i++) {
+    colors.push(generateRandomColor());
+  }
+  //Sukuriam spalvotus langelius su funkcija
+    boxes.innerHTML = "";
+    for (var color of colors) {
+    const newBox = document.createElement("div");
+    newBox.classList.add("box");
+    newBox.style.background = color;
+    newBox.addEventListener("click", boxClick);
+    boxes.appendChild(newBox);
+  }
+  displayRandomColorName();
+}
+
+startBtn.addEventListener("click", restartGame);
 function boxClick(event) {
   var clickedBox = event.target;
   var clickedColor = clickedBox.style.background;
@@ -37,29 +57,6 @@ function boxClick(event) {
       clickedBox.style.background = "#232323";
     }
 }
-
-function restartGame() {
-  topElement.style.background = "#4682b4";
-  colors = [];
-  var numBoxes = (container.classList.contains("hard")) ? 6 : 3;
-  for (var i = 0; i < numBoxes; i++) {
-    colors.push(generateRandomColor());
-  }
-
-  boxes.innerHTML = "";
-
-  for (var color of colors) {
-    const newBox = document.createElement("div");
-    newBox.classList.add("box");
-    newBox.style.background = color;
-    newBox.addEventListener("click", boxClick);
-    boxes.appendChild(newBox);
-  }
-
-  displayRandomColorName();
-}
-
-startBtn.addEventListener("click", restartGame);
 
 easy.addEventListener("click", function () {
   container.classList.remove("hard");
