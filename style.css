@@ -25,6 +25,11 @@ h3 {
     line-height: 30px;
 }
 
+span {
+    font-size: 1.5em;
+    line-height: 40px;
+}
+
 .nav {
     width:100%;
     background: white;
@@ -62,22 +67,21 @@ nav {
     height: 100%;
 }
 
-div .boxes{
-    display: block;
-}
-
-div .easy, .hard {
+div.container{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    position: relative;
+    width: 600px;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
-    padding-bottom: 20px;
-    
-}
-
-div .easy{
+    padding-bottom: 20px;  
     padding-top: 25px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .box {
@@ -93,6 +97,10 @@ div .easy{
         font-size: 0.9em;
     }
 
+    div.container {
+        width: 500px;
+    }
+
     .box {
         width: 120px;
         height: 120px;
@@ -100,13 +108,22 @@ div .easy{
 }
 
 @media (max-width: 410px){
-    .top, nav {
-        font-size: 0.7em;
+    .top{
+        width: 100%;
+        font-size: 1.3em;
+    }
+
+    nav{
+        font-size: 0.8em;
         width: 100%;
     }
 
+    div.container {
+        width: 250px;
+    }
+
     .box {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
 }
